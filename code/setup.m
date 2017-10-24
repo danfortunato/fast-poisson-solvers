@@ -9,7 +9,6 @@ addpath([root, '/solidsphere']);
 addpath([root, '/tests']);
 addpath([root, '/transforms']);
 addpath([root, '/vis']);
-figdir = strcat(root(1:end-5), '/paper/figures/');
 fprintf(' done.\n');
 
 mexcodes = {'adi', 'adi_tri'};
