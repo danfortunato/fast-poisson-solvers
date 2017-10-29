@@ -27,7 +27,7 @@ function X = poisson_rectangle( F, varargin )
 %
 %   POISSON_RECTANGLE( F, LBC, RBC, DBC, UBC, [A B C D], TOL ) solves using
 %   given Dirichlet data on the domain [A,B]x[C,D] to the specified error
-%   toelrance.
+%   tolerance.
 
 % DEVELOPER'S NOTE:
 %
