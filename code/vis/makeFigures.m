@@ -114,7 +114,7 @@ function SquareSolutionFigure()
     plot(u)
     view(2)
     colormap(colorpalette())
-    colorbar
+    colorbar('FontSize', 16)
     axis square
     axis off
 end
@@ -254,14 +254,10 @@ function SphereSolutionFigure()
     th = pi*trigpts( n3 );
     [rr, tt, ll] = ndgrid( r, th, lam );
     k = 2;
-    exact = @(r, th, lam) (1-r.^2).*r.^abs(k).*sin(lam).^abs(k).*exp(1i*k*th);
     rhs = @(r, th, lam) -2*(2*abs(k)+3).*r.^abs(k).*sin(lam).^abs(k).*exp(1i*k*th);
-    EXACT = exact(rr, tt, ll);
-    EXACT = vals2coeffs( EXACT );
     F = rhs(rr, tt, ll);
     F = vals2coeffs( F );
     X = poisson_solid_sphere( F );
-    norm( X(:) - EXACT(:) )
     colormap(colorpalette())
     sphereplot( X )
 end

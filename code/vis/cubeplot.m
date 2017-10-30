@@ -17,7 +17,7 @@ slice(u, 0, 0, 0)
 axis([-1 1 -1 1 -1 1])
 daspect([1 1 1])
 set(gca, 'Position', [0 0 1 1], 'CameraViewAngleMode', 'Manual')
-colorbar('Position', [0.87 0.09 0.04 0.8])
+colorbar('FontSize', 16, 'Position', [0.87 0.09 0.04 0.8])
 axis square
 axis off
 

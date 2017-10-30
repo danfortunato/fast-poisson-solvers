@@ -50,7 +50,7 @@ daspect([1 1 1])
 hold off
 
 set(gca, 'Position', [0 0 1 1], 'CameraViewAngleMode', 'Manual')
-colorbar('Position', [0.84 0.18 0.04 0.64])
+colorbar('FontSize', 16, 'Position', [0.84 0.18 0.04 0.64])
 axis off
 
 end
