@@ -133,27 +133,45 @@ function SquareTimingsFigure()
         fprintf('%g s\n', t_lyap(j));
         j = j + 1;
     end
-    
-    nn_adi = floor(logspace(1,4,40));
-    t_adi  = zeros(size(nn_adi));
+
+    nn_adi  = floor(logspace(1,4,40));
+    t_adi3  = zeros(size(nn_adi));
+    t_adi6  = zeros(size(nn_adi));
+    t_adi13 = zeros(size(nn_adi));
     j = 1;
     for n = nn_adi
         fprintf('n = %g\n', n);
         F = ones(n, n);
-        fprintf('  ADI: ');
+
         s = tic;
-        X_ADI = poisson_rectangle( F );
-        t_adi(j) = toc(s);
-        fprintf('%g s\n', t_adi(j));
+        X_ADI3 = poisson_rectangle( F, 1e-3 );
+        t_adi3(j) = toc(s);
+        fprintf('  ADI 1e-3: %g s\n', t_adi3(j));
+
+        s = tic;
+        X_ADI6 = poisson_rectangle( F, 1e-6 );
+        t_adi6(j) = toc(s);
+        fprintf('  ADI 1e-6: %g s\n', t_adi6(j));
+
+        s = tic;
+        X_ADI13 = poisson_rectangle( F, 1e-13 );
+        t_adi13(j) = toc(s);
+        fprintf('  ADI 1e-13: %g s\n', t_adi13(j));
+
         j = j + 1;
     end
-    
-    loglog(nn_adi,  t_adi,  'LineWidth', 2), hold on,
-    loglog(nn_lyap, t_lyap, 'LineWidth', 2)
+
+    loglog(nn_adi,  t_adi3,  'LineWidth', 2), hold on,
+    loglog(nn_adi,  t_adi6,  'LineWidth', 2)
+    loglog(nn_adi,  t_adi13, 'LineWidth', 2)
+    loglog(nn_lyap, t_lyap,  'LineWidth', 2)
     nn = nn_adi(nn_adi > 500);
     loglog(nn, 2.2e-8*nn.^2.*log(nn).^2, 'k--', 'LineWidth', 2)
     loglog(nn, 6.1e-9*nn.^3, 'k--', 'LineWidth', 2), hold off
-    legend('ADI', 'Bartels-Stewart', 'Location', 'NorthWest')
+    legend(['ADI, ' char(1013) ' = 10^{ -3}' ], ...
+           ['ADI, ' char(1013) ' = 10^{ -6}' ], ...
+           ['ADI, ' char(1013) ' = 10^{ -13}'], ...
+           'Bartels-Stewart', 'Location', 'NorthWest')
     set(gca, 'FontSize', 16)
     xlim([min(nn_adi) max(nn_adi)])
     ylim([2e-4 400])
