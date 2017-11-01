@@ -1,7 +1,7 @@
 # About
 This repository contains optimal complexity spectrally-accurate Poisson solvers on the rectangle, cylinder, solid sphere, and cube. The code accompanies the paper:
 
-* [1] Dan Fortunato and Alex Townsend, *Fast Poisson solvers for spectral methods*, submitted, 2017.
+* [1] Daniel Fortunato and Alex Townsend, *Fast Poisson solvers for spectral methods*, [arxiv:1710.11259](https://arxiv.org/abs/1710.11259), submitted, 2017.
 
 # Getting started
 To use the MATLAB code, first run `code/setup.m`. The Poisson solvers are:
